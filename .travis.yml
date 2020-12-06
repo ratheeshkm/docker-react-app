@@ -4,7 +4,7 @@ services:
   - docker
 
 before_install:
-  - docker build -t ratheeshkm/docker-react-app -f Dockerfile .
+  - docker build -t ratheeshkm/docker-react-app -f Dockerfile.dev .
 
 script:
   - docker run -e CI=true ratheeshkm/docker-react-app npm run test
@@ -15,6 +15,7 @@ deploy:
   app: docker-react-app
   env: DockerReactApp-env
   bucket_name: 	elasticbeanstalk-us-east-2-393635133277
+  bucket_path: docker-react-app
   on:
     branch: master
   access_key_id: $AWS_ACCESS_KEY
